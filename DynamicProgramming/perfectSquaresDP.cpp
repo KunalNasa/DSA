@@ -64,4 +64,4 @@ int solve(int n)
     {
 
     }
-
+    

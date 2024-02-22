@@ -15,6 +15,7 @@ long long int solve(int n)
     long long int ans = (n - 1) * (solve(n - 1) + solve(n - 2));
     return ans % 1000000007;
 }
+
 long long int solveMem(int n, vector<long long int> &dp)
 {
     if(n == 1)

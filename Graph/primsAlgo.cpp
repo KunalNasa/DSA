@@ -13,15 +13,16 @@ vector<pair<pair<int, int>, int>> calculatePrimsMST(int n, int m, vector<pair<pa
         adj[u].push_back(make_pair(v,w));
         adj[v].push_back(make_pair(u,w));
     }
-
-    vector<int> key(n + 1, INT_MAX);
-    vector<bool> mst(n + 1, false);
-    vector<int> parent(n + 1, -1);
+    // length is n + 1 because nodes are starting from 1 and not from 0
+    vector<int> key(n + 1, INT_MAX); // to store the minimum weights in mst
+    vector<bool> mst(n + 1, false); // to keep the record of traversed elements
+    vector<int> parent(n + 1, -1); // to form bst in end
 
 
     // Algorithm starts
     key[1] = 0;
     
+
     for(int i = 1; i < n; i++)
     {
         int mini = INT_MAX;
@@ -45,6 +46,7 @@ vector<pair<pair<int, int>, int>> calculatePrimsMST(int n, int m, vector<pair<pa
         {
             int v = it.first;
             int w = it.second;
+            // if below condition satisfied update the parent of adj node
             if(mst[v] == false && w < key[v])
             {
                 parent[v] = u;
